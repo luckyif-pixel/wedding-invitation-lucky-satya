@@ -108,3 +108,184 @@
 
         /* 4. Gallery Space */
         .gallery-item { align-items: center; padding: 160px 5%; }
+        .artwork-container {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+        .artwork-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            background: #eee;
+            filter: grayscale(20%);
+        }
+        .artwork-label {
+            margin-top: 2.5rem;
+            border-left: 1px solid var(--text-main);
+            padding-left: 1.5rem;
+        }
+        .artwork-label h3 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+
+        /* 5. Attendance */
+        .attendance { text-align: center; background-color: #EFEDE7; }
+        .rsvp-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1.2rem 4rem;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            transition: all 0.4s ease;
+        }
+        .rsvp-btn:hover { background: var(--text-main); color: var(--bg-color); }
+
+        /* 6. Acknowledgement */
+        .credits { text-align: center; border-top: 1px solid var(--border-color); padding: 100px 5%; }
+        .parent-names { font-size: 0.9rem; margin-top: 2rem; line-height: 2.2; }
+
+        /* 7. Closing */
+        .closing { text-align: center; min-height: 60vh; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            nav { display: none; } /* Hide complex nav on mobile for minimal feel */
+            .info-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .artwork-container { padding: 1.5rem; }
+            .hero h1 { font-size: 5rem; }
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="label-sm">L&S — 2026</div>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#curatorial">Note</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#rsvp">RSVP</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero reveal">
+        <span class="label-sm" style="margin-bottom: 2rem;">A Phase in Process</span>
+        <h1>Exhibition</h1>
+        <p class="hero-names serif">Lucky Ika Fidyani & Satya Oktabrian</p>
+        <p class="label-sm">21 May 2026 — Surabaya, Indonesia</p>
+    </section>
+
+    <section id="curatorial">
+        <div class="container-narrow">
+            <span class="label-sm" style="margin-bottom: 3rem; display: block;">Curatorial Wall</span>
+            <div class="curatorial-text serif">
+                “This exhibition is not about arrival.<br>
+                It is about choosing again and again.<br>
+                On 21 May 2026, we present a phase of a continuing work.”
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container-narrow">
+            <span class="label-sm">Exhibition Details</span>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label-sm">Date</span>
+                    <p>Thursday, 21 May 2026</p>
+                </div>
+                <div class="info-item">
+                    <span class="label-sm">Location</span>
+                    <p>The Heritage Gallery, Surabaya</p>
+                </div>
+                <div class="info-item">
+                    <span class="label-sm">Time</span>
+                    <p>10:00 WIB — Finish</p>
+                </div>
+                <div class="info-item">
+                    <span class="label-sm">Sessions</span>
+                    <p>Ceremony & Reception</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-item">
+        <div class="artwork-container">
+            <img src="https://images.unsplash.com/photo-1518131359073-ad293c3f90c9?auto=format&fit=crop&w=1200" alt="Work 1" class="artwork-img">
+            <div class="artwork-label">
+                <h3>I. The Foundation</h3>
+                <p class="label-sm">Year: 2026</p>
+                <p class="label-sm">Medium: Photography / Stillness</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-item">
+        <div class="artwork-container">
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200" alt="Work 2" class="artwork-img">
+            <div class="artwork-label">
+                <h3>II. In Tandem</h3>
+                <p class="label-sm">Year: 2026</p>
+                <p class="label-sm">Medium: Photography / Light Study</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="attendance">
+        <div class="container-narrow">
+            <span class="label-sm">Visitor Registration</span>
+            <h2 class="serif" style="font-size: 3rem; margin-top: 1rem;">Your presence is part of this exhibition.</h2>
+            <p style="margin-top: 1.5rem; color: var(--text-dim);">We invite you to witness this specific moment in time.</p>
+            <a href="https://wa.me/628123456789?text=I%20would%20like%20to%20register%20my%20attendance" class="rsvp-btn">Register Attendance</a>
+        </div>
+    </section>
+
+    <section class="credits">
+        <div class="container-narrow">
+            <span class="label-sm">Institutional Support</span>
+            <p class="parent-names serif">
+                Exhibition made possible with the blessings and support of our families:<br>
+                <span style="color: var(--text-main); font-weight: 500;">The family of Bpk. Ika & Ibu Fidyani</span><br>
+                <span style="color: var(--text-main); font-weight: 500;">The family of Bpk. Satya & Ibu Oktabrian</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="closing">
+        <div class="container-narrow">
+            <p class="serif" style="font-size: 2.2rem; font-style: italic;">“Not every step was visible. None were wasted.”</p>
+            <div style="margin-top: 4rem;">
+                <span class="label-sm">LUCKY & SATYA — 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Reveal Section on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
