@@ -3,251 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exhibition: Lucky & Satya — A Phase in Process</title>
+    <title>Lucky & Satya — Exhibition 2026</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #F5F5F0; /* Museum Bone */
-            --text-primary: #1A1A1A; /* Deep Charcoal */
-            --text-secondary: #666666;
-            --accent: #A8A297; /* Clay */
-            --border: rgba(0, 0, 0, 0.08);
-            --space-lg: 160px;
-            --space-md: 80px;
+            --bg-color: #F4F1EA; /* Museum Bone */
+            --text-main: #1A1A1A; /* Charcoal */
+            --text-dim: #666666;
+            --accent: #8C8179; /* Clay */
+            --border-color: rgba(26, 26, 26, 0.1);
+            --transition-slow: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-primary);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* Typography */
-        h1, h2, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
-        .label-text { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); }
+        /* Typography Defaults */
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+        .label-sm { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); }
 
-        /* Structural Layout */
-        section { 
-            min-height: 100vh; 
-            padding: var(--space-md) 10%; 
-            display: flex; 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(244, 241, 234, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: 2rem;
+            transition: opacity 0.3s ease;
+        }
+        nav a:hover { opacity: 0.5; }
+
+        /* Shared Layout */
+        section {
+            padding: 120px 5%;
+            min-height: 100vh;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: var(--transition-slow);
         }
+        section.reveal { opacity: 1; transform: translateY(0); }
 
-        section.is-visible { opacity: 1; transform: translateY(0); }
+        .container-narrow { max-width: 800px; margin: 0 auto; width: 100%; }
 
-        .container-narrow { max-width: 700px; margin: 0 auto; }
-
-        /* Section 1: Exhibition Poster */
-        .poster {
-            height: 100vh;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .poster h1 {
-            font-size: clamp(4rem, 15vw, 10rem);
-            line-height: 0.9;
+        /* 1. Cover Poster */
+        .hero { height: 100vh; text-align: center; border-bottom: 1px solid var(--border-color); }
+        .hero h1 { 
+            font-size: clamp(4rem, 15vw, 12rem); 
+            line-height: 0.8; 
             margin-bottom: 2rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.04em;
         }
+        .hero-names { font-size: 1.5rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
 
-        .poster-meta {
-            border-top: 1px solid var(--text-primary);
-            display: inline-block;
-            padding-top: 1rem;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        /* Section 2: Curatorial Wall */
+        /* 2. Curatorial Panel */
         .curatorial { align-items: flex-start; }
-        .curatorial p { font-size: 1.8rem; line-height: 1.4; color: var(--text-primary); font-family: 'Cormorant Garamond', serif; }
-
-        /* Section 3: Label Panel */
-        .info-panel { 
-            background: #EBEBE6; 
-            padding: 4rem; 
-            border-left: 1px solid var(--text-primary);
-            max-width: 500px;
+        .curatorial-text {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            line-height: 1.3;
+            border-left: 1px solid var(--text-main);
+            padding-left: 2rem;
+            font-style: italic;
         }
 
-        .info-row { margin-bottom: 2rem; }
-        .info-row:last-child { margin-bottom: 0; }
-
-        /* Sections 4-13: Gallery Space */
-        .gallery-room { padding: var(--space-lg) 5%; align-items: center; }
-        
-        .artwork-frame {
-            width: 100%;
-            max-width: 900px;
-            background: #FFF;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-
-        .artwork-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 4/5;
-            background-color: #DDD;
-            object-fit: cover;
-            filter: sepia(20%) contrast(1.05);
-        }
-
-        .artwork-label {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            max-width: 300px;
-        }
-
-        /* Section 14: Attendance */
-        .visitor-panel { text-align: center; }
-        .btn-rsvp {
-            display: inline-block;
+        /* 3. Exhibition Info (Label) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             margin-top: 3rem;
-            padding: 1.5rem 4rem;
-            border: 1px solid var(--text-primary);
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.8rem;
         }
-        .btn-rsvp:hover { background: var(--text-primary); color: var(--bg); }
+        .info-item { border-top: 1px solid var(--border-color); padding-top: 1rem; }
+        .info-item p { margin-top: 0.5rem; font-size: 1.1rem; }
 
-        /* Section 15: Credits */
-        .credits { font-size: 0.9rem; color: var(--text-secondary); border-top: 1px solid var(--border); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            section { padding: 60px 5%; }
-            .curatorial p { font-size: 1.4rem; }
-            .poster h1 { font-size: 4rem; }
-            .info-panel { max-width: 100%; padding: 2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <section class="poster is-visible">
-        <span class="label-text">Solo Presentation</span>
-        <h1>EXHIBITION</h1>
-        <div class="poster-meta">
-            <p class="serif" style="font-size: 1.5rem;">Lucky Ika Fidyani & Satya Oktabrian</p>
-            <p class="label-text" style="margin-top: 0.5rem;">21 May 2026 — Surabaya, ID</p>
-        </div>
-    </section>
-
-    <section class="curatorial">
-        <div class="container-narrow">
-            <span class="label-text" style="margin-bottom: 2rem; display: block;">Curatorial Note</span>
-            <p>“This exhibition is not about arrival. It is about choosing again and again. It is a study of two distinct bodies of work moving into a shared space. On 21 May 2026, we present a phase of a continuing work.”</p>
-        </div>
-    </section>
-
-    <section>
-        <div class="info-panel">
-            <div class="info-row">
-                <span class="label-text">Title</span>
-                <p class="serif" style="font-size: 1.5rem;">The Ceramic Phase: A Wedding Ceremony</p>
-            </div>
-            <div class="info-row">
-                <span class="label-text">Date & Time</span>
-                <p>Thursday, 21 May 2026<br>Opening: 10.00 WIB</p>
-            </div>
-            <div class="info-row">
-                <span class="label-text">Location</span>
-                <p>The Heritage Gallery, Surabaya<br>East Java, Indonesia</p>
-            </div>
-            <div class="info-row">
-                <span class="label-text">Access</span>
-                <p><a href="#" style="color: inherit;">Digital Map Link — Reference 0.1</a></p>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-room">
-        <div class="artwork-frame">
-            <img src="https://images.unsplash.com/photo-1531346680769-a1d7d0674762?auto=format&fit=crop&w=1200" class="artwork-image" alt="Artwork 1">
-            <div class="artwork-label">
-                <p class="serif">I. Before the Kiln</p>
-                <p class="label-text">Photography, 2026</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-room">
-        <div class="artwork-frame">
-            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200" class="artwork-image" alt="Artwork 2">
-            <div class="artwork-label">
-                <p class="serif">II. The Unfolding</p>
-                <p class="label-text">Photography, 2026</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="visitor-panel">
-        <div class="container-narrow">
-            <span class="label-text">Participation</span>
-            <h2 style="font-size: 3rem; margin-top: 1rem;">Your presence is part of this exhibition.</h2>
-            <a href="https://wa.me/628123456789" class="btn-rsvp">Register Attendance</a>
-        </div>
-    </section>
-
-    <section class="credits">
-        <div class="container-narrow" style="text-align: center;">
-            <span class="label-text">Institutional Support</span>
-            <div style="margin-top: 2rem;">
-                <p>Exhibition made possible with the blessings and support of our families:</p>
-                <p style="margin-top: 1rem; color: var(--text-primary);">
-                    The Family of Bpk. Ika & Ibu Fidyani<br>
-                    The Family of Bpk. Satya & Ibu Oktabrian
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section style="min-height: 80vh; border-top: 1px solid var(--border);">
-        <div class="container-narrow" style="text-align: center;">
-            <p class="serif" style="font-size: 2rem; font-style: italic; opacity: 0.6;">“Not every step was visible. None were wasted.”</p>
-            <p class="label-text" style="margin-top: 4rem;">Fin.</p>
-        </div>
-    </section>
-
-    <script>
-        // Museum-grade Reveal Logic
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-</body>
-</html>
+        /* 4. Gallery Space */
+        .gallery-item { align-items: center; padding: 160px 5%; }
